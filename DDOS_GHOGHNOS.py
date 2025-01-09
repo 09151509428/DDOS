@@ -15,7 +15,26 @@ x = ("""
 for CoursNight in x :
 	sleep(0.002)
 	print(CoursNight,end='' ,flush=True)
+for CoursNight in x :
+	sleep(0.002)
+	print(CoursNight,end='' ,flush=True)
+import httpx
+def check_license():
+    url = "https://github.com/09151509428/DDOS/blob/main/README.md"
+    try:
+        response = httpx.get(url, timeout=10)
+        response.raise_for_status()
+        text = response.text.strip()
+        if "off" in text:
+            print("لایسنس غیر فعال است")
+            sys.exit(1)
+        elif "on" in text: 
+            pass
+    except httpx.RequestError as e:
+        print("خطا")
+        sys.exit(1)
 
+check_license()
 
 x = '\033[31m'
 print(x,'DDOS = MiLaD-TeRoRr',x)
